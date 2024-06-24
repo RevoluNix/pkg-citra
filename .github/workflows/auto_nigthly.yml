@@ -8,6 +8,8 @@ jobs:
     name: auto create and push release
     runs-on: ubuntu-22.04
     steps:
+      - uses: cachix/install-nix-action@v27
+
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
