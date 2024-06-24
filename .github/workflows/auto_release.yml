@@ -4,7 +4,7 @@ on:
     - main
 
 jobs:
-  auto_ralease:
+  auto_release:
     name: auto create and push release
     runs-on: ubuntu-22.04
     steps:
@@ -24,6 +24,7 @@ jobs:
         id: generate_package
         run: |
           sed -i "s/version = \".*\";/version = \"${{ env.TAG_NAME }}\";/g" ./package.nix
+          nix build
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
