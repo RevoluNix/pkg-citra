@@ -18,6 +18,8 @@ jobs:
       - name: Generate Release version from date
         id: date
         run: |
+          PKG_NAME="$(basename "${{ github.repository }}" | sed 's/pkg-//g')"
+          echo "PKG_NAME=$PKG_NAME" >> $GITHUB_ENV
           TAG_NAME="nightly-$(date +'%Y.%m.%d-%H.%M.%S')"
           echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
           echo "Tag name will be: $TAG_NAME"
